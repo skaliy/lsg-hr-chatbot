@@ -47,7 +47,7 @@ UI_CHAT_DESCRIPTION = (
     or "This chatbot is configured to answer your questions"
 )
 UI_FAVICON = os.environ.get("UI_FAVICON") or "/favicon.ico"
-UI_SHOW_SHARE_BUTTON = os.environ.get("UI_SHOW_SHARE_BUTTON", "true").lower() == "true"
+UI_SHOW_SHARE_BUTTON = os.environ.get("UI_SHOW_SHARE_BUTTON", "false").lower() == "true"
 
 
 def create_app():

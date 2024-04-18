@@ -242,7 +242,7 @@ const Chat = () => {
 
         } catch (e) {
             if (!abortController.signal.aborted) {
-                let errorMessage = "An error occurred. Please try again. If the problem persists, please contact the site administrator.";
+                let errorMessage = "En feil oppstod. Vennligst prøv igjen. Dersom problemet fortsatt oppstår, ta kontakt med nettstedets administrator.";
                 if (result.error?.message) {
                     errorMessage = result.error.message;
                 }
@@ -690,7 +690,7 @@ const Chat = () => {
                                         <div className={styles.chatMessageGpt}>
                                             <Answer
                                                 answer={{
-                                                    answer: "Generating answer...",
+                                                    answer: "Genererer svar...",
                                                     citations: []
                                                 }}
                                                 onCitationClicked={() => null}
@@ -714,7 +714,7 @@ const Chat = () => {
                                     onKeyDown={e => e.key === "Enter" || e.key === " " ? stopGenerating() : null}
                                 >
                                     <SquareRegular className={styles.stopGeneratingIcon} aria-hidden="true" />
-                                    <span className={styles.stopGeneratingText} aria-hidden="true">Stop generating</span>
+                                    <span className={styles.stopGeneratingText} aria-hidden="true">Stopp generering</span>
                                 </Stack>
                             )}
                             <Stack>
@@ -774,7 +774,7 @@ const Chat = () => {
                             </Stack>
                             <QuestionInput
                                 clearOnSend
-                                placeholder="Type a new question..."
+                                placeholder="Skriv et nytt spørsmål..."
                                 disabled={isLoading}
                                 onSend={(question, id) => {
                                     appStateContext?.state.isCosmosDBAvailable?.cosmosDB ? makeApiRequestWithCosmosDB(question, id) : makeApiRequestWithoutCosmosDB(question, id)
@@ -787,8 +787,9 @@ const Chat = () => {
                     {messages && messages.length > 0 && isCitationPanelOpen && activeCitation && (
                         <Stack.Item className={styles.citationPanel} tabIndex={0} role="tabpanel" aria-label="Citations Panel">
                             <Stack aria-label="Citations Panel Header Container" horizontal className={styles.citationPanelHeaderContainer} horizontalAlign="space-between" verticalAlign="center">
-                                <span aria-label="Citations" className={styles.citationPanelHeader}>Citations</span>
-                                <IconButton iconProps={{ iconName: 'Cancel' }} aria-label="Close citations panel" onClick={() => setIsCitationPanelOpen(false)} />
+                                <span aria-label="Citations" className={styles.citationPanelHeader}>Sitater</span> 
+                                {/* Citations */}
+                                <IconButton iconProps={{ iconName: 'Cancel' }} aria-label="Lukk sitatpanel" onClick={() => setIsCitationPanelOpen(false)} />
                             </Stack>
                             <h5 className={styles.citationPanelTitle} tabIndex={0} title={activeCitation.url && !activeCitation.url.includes("blob.core") ? activeCitation.url : activeCitation.title ?? ""} onClick={() => onViewSource(activeCitation)}>{activeCitation.title}</h5>
                             <div tabIndex={0}>
