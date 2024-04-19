@@ -9,9 +9,9 @@ import uuid from 'react-uuid'
 import { isEmpty } from 'lodash'
 import DOMPurify from 'dompurify'
 
-import styles from './Chat.module.css'
-import Contoso from '../../assets/Contoso.svg'
-import { XSSAllowTags } from '../../constants/xssAllowTags'
+import styles from "./Chat.module.css";
+import Leroy from "../../assets/Leroy.svg";
+import { XSSAllowTags } from "../../constants/xssAllowTags";
 
 import {
   ChatMessage,
@@ -696,91 +696,77 @@ const Chat = () => {
     )
   }
 
-  return (
-    <div className={styles.container} role="main">
-      {showAuthMessage ? (
-        <Stack className={styles.chatEmptyState}>
-          <ShieldLockRegular
-            className={styles.chatIcon}
-            style={{ color: 'darkorange', height: '200px', width: '200px' }}
-          />
-          <h1 className={styles.chatEmptyStateTitle}>Authentication Not Configured</h1>
-          <h2 className={styles.chatEmptyStateSubtitle}>
-            This app does not have authentication configured. Please add an identity provider by finding your app in the{' '}
-            <a href="https://portal.azure.com/" target="_blank">
-              Azure Portal
-            </a>
-            and following{' '}
-            <a
-              href="https://learn.microsoft.com/en-us/azure/app-service/scenario-secure-app-authentication-app-service#3-configure-authentication-and-authorization"
-              target="_blank">
-              these instructions
-            </a>
-            .
-          </h2>
-          <h2 className={styles.chatEmptyStateSubtitle} style={{ fontSize: '20px' }}>
-            <strong>Authentication configuration takes a few minutes to apply. </strong>
-          </h2>
-          <h2 className={styles.chatEmptyStateSubtitle} style={{ fontSize: '20px' }}>
-            <strong>If you deployed in the last 10 minutes, please wait and reload the page after 10 minutes.</strong>
-          </h2>
-        </Stack>
-      ) : (
-        <Stack horizontal className={styles.chatRoot}>
-          <div className={styles.chatContainer}>
-            {!messages || messages.length < 1 ? (
-              <Stack className={styles.chatEmptyState}>
-                <img src={ui?.chat_logo ? ui.chat_logo : Contoso} className={styles.chatIcon} aria-hidden="true" />
-                <h1 className={styles.chatEmptyStateTitle}>{ui?.chat_title}</h1>
-                <h2 className={styles.chatEmptyStateSubtitle}>{ui?.chat_description}</h2>
-              </Stack>
+    return (
+        <div className={styles.container} role="main">
+            {showAuthMessage ? (
+                <Stack className={styles.chatEmptyState}>
+                    <ShieldLockRegular className={styles.chatIcon} style={{ color: 'darkorange', height: "200px", width: "200px" }} />
+                    <h1 className={styles.chatEmptyStateTitle}>Authentication Not Configured</h1>
+                    <h2 className={styles.chatEmptyStateSubtitle}>
+                        This app does not have authentication configured. Please add an identity provider by finding your app in the <a href="https://portal.azure.com/" target="_blank">Azure Portal</a> 
+                        and following <a href="https://learn.microsoft.com/en-us/azure/app-service/scenario-secure-app-authentication-app-service#3-configure-authentication-and-authorization" target="_blank">these instructions</a>.
+                    </h2>
+                    <h2 className={styles.chatEmptyStateSubtitle} style={{ fontSize: "20px" }}><strong>Authentication configuration takes a few minutes to apply. </strong></h2>
+                    <h2 className={styles.chatEmptyStateSubtitle} style={{ fontSize: "20px" }}><strong>If you deployed in the last 10 minutes, please wait and reload the page after 10 minutes.</strong></h2>
+                </Stack>
             ) : (
-              <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? '40px' : '0px' }} role="log">
-                {messages.map((answer, index) => (
-                  <>
-                    {answer.role === 'user' ? (
-                      <div className={styles.chatMessageUser} tabIndex={0}>
-                        <div className={styles.chatMessageUserMessage}>{answer.content}</div>
-                      </div>
-                    ) : answer.role === 'assistant' ? (
-                      <div className={styles.chatMessageGpt}>
-                        <Answer
-                          answer={{
-                            answer: answer.content,
-                            citations: parseCitationFromMessage(messages[index - 1]),
-                            message_id: answer.id,
-                            feedback: answer.feedback
-                          }}
-                          onCitationClicked={c => onShowCitation(c)}
-                        />
-                      </div>
-                    ) : answer.role === ERROR ? (
-                      <div className={styles.chatMessageError}>
-                        <Stack horizontal className={styles.chatMessageErrorContent}>
-                          <ErrorCircleRegular className={styles.errorIcon} style={{ color: 'rgba(182, 52, 67, 1)' }} />
-                          <span>Error</span>
-                        </Stack>
-                        <span className={styles.chatMessageErrorContent}>{answer.content}</span>
-                      </div>
-                    ) : null}
-                  </>
-                ))}
-                {showLoadingMessage && (
-                  <>
-                    <div className={styles.chatMessageGpt}>
-                      <Answer
-                        answer={{
-                          answer: 'Generating answer...',
-                          citations: []
-                        }}
-                        onCitationClicked={() => null}
-                      />
-                    </div>
-                  </>
-                )}
-                <div ref={chatMessageStreamEnd} />
-              </div>
-            )}
+                <Stack horizontal className={styles.chatRoot}>
+                    <div className={styles.chatContainer}>
+                        {!messages || messages.length < 1 ? (
+                            <Stack className={styles.chatEmptyState}>
+                                <img
+                                    src={ui?.chat_logo ? ui.chat_logo : Leroy}
+                                    className={styles.chatIcon}
+                                    aria-hidden="true"
+                                />
+                                <h1 className={styles.chatEmptyStateTitle}>{ui?.chat_title}</h1>
+                                <h2 className={styles.chatEmptyStateSubtitle}>{ui?.chat_description}</h2>
+                            </Stack>
+                        ) : (
+                            <div className={styles.chatMessageStream} style={{ marginBottom: isLoading ? "40px" : "0px" }} role="log">
+                                {messages.map((answer, index) => (
+                                    <>
+                                        {answer.role === "user" ? (
+                                            <div className={styles.chatMessageUser} tabIndex={0}>
+                                                <div className={styles.chatMessageUserMessage}>{answer.content}</div>
+                                            </div>
+                                        ) : (
+                                            answer.role === "assistant" ? <div className={styles.chatMessageGpt}>
+                                                <Answer
+                                                    answer={{
+                                                        answer: answer.content,
+                                                        citations: parseCitationFromMessage(messages[index - 1]),
+                                                        message_id: answer.id,
+                                                        feedback: answer.feedback
+                                                    }}
+                                                    onCitationClicked={c => onShowCitation(c)}
+                                                />
+                                            </div> : answer.role === ERROR ? <div className={styles.chatMessageError}>
+                                                <Stack horizontal className={styles.chatMessageErrorContent}>
+                                                    <ErrorCircleRegular className={styles.errorIcon} style={{ color: "rgba(182, 52, 67, 1)" }} />
+                                                    <span>Error</span>
+                                                </Stack>
+                                                <span className={styles.chatMessageErrorContent}>{answer.content}</span>
+                                            </div> : null
+                                        )}
+                                    </>
+                                ))}
+                                {showLoadingMessage && (
+                                    <>
+                                        <div className={styles.chatMessageGpt}>
+                                            <Answer
+                                                answer={{
+                                                    answer: "Genererer svar...",
+                                                    citations: []
+                                                }}
+                                                onCitationClicked={() => null}
+                                            />
+                                        </div>
+                                    </>
+                                )}
+                                <div ref={chatMessageStreamEnd} />
+                            </div>
+                        )}
 
             <Stack horizontal className={styles.chatInput}>
               {isLoading && (

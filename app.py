@@ -39,13 +39,13 @@ MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION = "2024-02-15-preview"
 load_dotenv()
 
 # UI configuration (optional)
-UI_TITLE = os.environ.get("UI_TITLE") or "Contoso"
+UI_TITLE = os.environ.get("UI_TITLE") or "HR-assistent"
 UI_LOGO = os.environ.get("UI_LOGO")
 UI_CHAT_LOGO = os.environ.get("UI_CHAT_LOGO")
-UI_CHAT_TITLE = os.environ.get("UI_CHAT_TITLE") or "Start chatting"
+UI_CHAT_TITLE = os.environ.get("UI_CHAT_TITLE") or "Start samtale"
 UI_CHAT_DESCRIPTION = (
     os.environ.get("UI_CHAT_DESCRIPTION")
-    or "This chatbot is configured to answer your questions"
+    or "Denne assistenten er utviklet for å hjelpe deg med å finne svar på dine HR-relaterte spørsmål"
 )
 UI_FAVICON = os.environ.get("UI_FAVICON") or "/favicon.ico"
 UI_SHOW_SHARE_BUTTON = os.environ.get("UI_SHOW_SHARE_BUTTON", "false").lower() == "true"

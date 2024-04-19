@@ -102,7 +102,7 @@ If this is your first time deploying the app, you can use [az webapp up](https:/
 
 If you've deployed the app previously, first run this command to update the appsettings to allow local code deployment:
 
-`az webapp config appsettings set -g <resource-group-name> -n <existing-app-name> --settings WEBSITE_WEBDEPLOY_USE_SCM=false`
+`powershell .\setenv.ps1 -resourceGroup <resource-group-name>  -webappName <existing-app-name> `
 
 Check the runtime stack for your app by viewing the app service resource in the Azure Portal. If it shows "Python - 3.10", use `PYTHON:3.10` in the runtime argument below. If it shows "Python - 3.11", use `PYTHON:3.11` in the runtime argument below. 
 
