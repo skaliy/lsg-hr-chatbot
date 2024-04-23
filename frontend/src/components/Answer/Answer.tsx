@@ -307,7 +307,7 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
                         </Stack.Item>
                     )}
                     <Stack.Item className={styles.answerDisclaimerContainer}>
-                        <span className={styles.answerDisclaimer}>KI-generert innhold kan være feil; Brukeren er ansvarlig for å kontrollere at opplysningene er korrekte.</span>
+                        <span className={styles.answerDisclaimer}>KI-generert innhold kan være feil; sjekk fakta. </span>
                     </Stack.Item>
                 </Stack>
                 {chevronIsExpanded &&
