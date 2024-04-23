@@ -5,6 +5,8 @@ This repo contains code for Lerøy HR assistant chat webapp that integrates with
 ![](hr_assistant.png)
 
 ## Deploy the app
+TODO: Deploy through Copilot instead.
+#https://devblogs.microsoft.com/microsoft365dev/deploy-your-chatgpt-based-model-securely-using-microsoft-teams-power-virtual-agent-and-azure-openai/
 
 ### Deploy from your local machine
 
