@@ -258,7 +258,7 @@ export const Answer = ({
                         </Stack.Item>
                     )}
                     <Stack.Item className={styles.answerDisclaimerContainer}>
-                        <span className={styles.answerDisclaimer}>KI-generert innhold kan være feil; sjekk fakta. </span>
+                        <span className={styles.answerDisclaimer}>KI-generert innhold kan være feil; sjekk fakta.</span>
                     </Stack.Item>
                 </Stack>
                 {chevronIsExpanded &&
