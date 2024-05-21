@@ -45,7 +45,7 @@ UI_CHAT_LOGO = os.environ.get("UI_CHAT_LOGO")
 UI_CHAT_TITLE = os.environ.get("UI_CHAT_TITLE") or "Start samtale"
 UI_CHAT_DESCRIPTION = (
     os.environ.get("UI_CHAT_DESCRIPTION")
-    or "Denne assistenten er utviklet for å hjelpe deg med å finne svar på dine HR og lønssrelaterte spørsmål"
+    or "Denne assistenten er utviklet for å hjelpe deg med å finne svar på dine HR og lønnsrelaterte spørsmål"
 )
 UI_FAVICON = os.environ.get("UI_FAVICON") or "/favicon.ico"
 UI_SHOW_SHARE_BUTTON = os.environ.get("UI_SHOW_SHARE_BUTTON", "false").lower() == "true"
