@@ -11,6 +11,7 @@ import DOMPurify from 'dompurify'
 
 import styles from "./Chat.module.css";
 import Leroy from "../../assets/Leroy.svg";
+import Leroy from "../../assets/Leroy.svg";
 import { XSSAllowTags } from "../../constants/xssAllowTags";
 
 import {
@@ -715,6 +716,7 @@ const Chat = () => {
                         {!messages || messages.length < 1 ? (
                             <Stack className={styles.chatEmptyState}>
                                 <img
+                                    src={ui?.chat_logo ? ui.chat_logo : Leroy}
                                     src={ui?.chat_logo ? ui.chat_logo : Leroy}
                                     className={styles.chatIcon}
                                     aria-hidden="true"
