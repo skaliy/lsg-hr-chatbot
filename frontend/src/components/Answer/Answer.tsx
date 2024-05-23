@@ -69,21 +69,24 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
   const createCitationFilepath = (citation: Citation, index: number, truncate: boolean = false) => {
     let citationFilename = ''
 
-    if (citation.filepath) {
-      const part_i = citation.part_index ?? (citation.chunk_id ? parseInt(citation.chunk_id) + 1 : '')
-      if (truncate && citation.filepath.length > filePathTruncationLimit) {
-        const citationLength = citation.filepath.length
-        citationFilename = `${citation.filepath.substring(0, 20)}...${citation.filepath.substring(citationLength - 20)} - Part ${part_i}`
-      } else {
-        citationFilename = `${citation.filepath} - Part ${part_i}`
-      }
-    } else if (citation.filepath && citation.reindex_id) {
-      citationFilename = `${citation.filepath} - Part ${citation.reindex_id}`
-    } else {
-      citationFilename = `Citation ${index}`
+        if (citation.filepath) {
+            const part_i = citation.part_index ?? (citation.chunk_id ? parseInt(citation.chunk_id) + 1 : '');
+            if (truncate && citation.filepath.length > filePathTruncationLimit) {
+                const citationLength = citation.filepath.length;
+                citationFilename = `${citation.filepath.substring(0, 20)}...${citation.filepath.substring(citationLength - 20)} - Part ${part_i}`;
+            }
+            else {
+                citationFilename = `${citation.filepath} - Part ${part_i}`;
+            }
+        }
+        else if (citation.filepath && citation.reindex_id) {
+            citationFilename = `${citation.filepath} - Part ${citation.reindex_id}`;
+        }
+        else {
+            citationFilename = `Referanse ${index}`;
+        }
+        return citationFilename;
     }
-    return citationFilename
-  }
 
   const onLikeResponseClicked = async () => {
     if (answer.message_id == undefined) return
@@ -310,8 +313,8 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
                     role="button">
                     <span>
                       {parsedAnswer.citations.length > 1
-                        ? parsedAnswer.citations.length + ' references'
-                        : '1 reference'}
+                        ? parsedAnswer.citations.length + ' referanser'
+                        : '1 referanse'}
                     </span>
                   </Text>
                   <FontIcon
@@ -324,7 +327,7 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
             </Stack.Item>
           )}
           <Stack.Item className={styles.answerDisclaimerContainer}>
-            <span className={styles.answerDisclaimer}>AI-generated content may be incorrect</span>
+            <span className={styles.answerDisclaimer}>KI-generert innhold kan være feil; sjekk fakta.t</span>
           </Stack.Item>
         </Stack>
         {chevronIsExpanded && (
@@ -371,11 +374,11 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
           ]
         }}
         dialogContentProps={{
-          title: 'Submit Feedback',
+          title: 'Send inn tilbakemelding',
           showCloseButton: true
         }}>
         <Stack tokens={{ childrenGap: 4 }}>
-          <div>Your feedback will improve this experience.</div>
+          <div>Tilbakemeldingen din vil forbedre fremtidig brukeropplevelse.</div>
 
           {!showReportInappropriateFeedback ? <UnhelpfulFeedbackContent /> : <ReportInappropriateFeedbackContent />}
 

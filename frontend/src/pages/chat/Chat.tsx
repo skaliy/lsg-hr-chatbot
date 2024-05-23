@@ -9,9 +9,10 @@ import uuid from 'react-uuid'
 import { isEmpty } from 'lodash'
 import DOMPurify from 'dompurify'
 
-import styles from './Chat.module.css'
-import Contoso from '../../assets/Contoso.svg'
-import { XSSAllowTags } from '../../constants/xssAllowTags'
+import styles from "./Chat.module.css";
+import Leroy from "../../assets/Leroy.svg";
+import Leroy from "../../assets/Leroy.svg";
+import { XSSAllowTags } from "../../constants/xssAllowTags";
 
 import {
   ChatMessage,
@@ -243,7 +244,7 @@ const Chat = () => {
     } catch (e) {
       if (!abortController.signal.aborted) {
         let errorMessage =
-          'An error occurred. Please try again. If the problem persists, please contact the site administrator.'
+          'En feil oppstod. Vennligst prøv igjen. Dersom problemet fortsatt oppstår, ta kontakt med nettstedets administrator.'
         if (result.error?.message) {
           errorMessage = result.error.message
         } else if (typeof result.error === 'string') {
@@ -792,7 +793,7 @@ const Chat = () => {
                     <div className={styles.chatMessageGpt}>
                       <Answer
                         answer={{
-                          answer: "Generating answer...",
+                          answer: "Genererer svar..."
                           citations: [],
                           plotly_data: null
                         }}
@@ -817,7 +818,7 @@ const Chat = () => {
                   onKeyDown={e => (e.key === 'Enter' || e.key === ' ' ? stopGenerating() : null)}>
                   <SquareRegular className={styles.stopGeneratingIcon} aria-hidden="true" />
                   <span className={styles.stopGeneratingText} aria-hidden="true">
-                    Stop generating
+                    Stopp generering
                   </span>
                 </Stack>
               )}
@@ -888,7 +889,7 @@ const Chat = () => {
               </Stack>
               <QuestionInput
                 clearOnSend
-                placeholder="Type a new question..."
+                placeholder="Skriv et nytt spørsmål..."
                 disabled={isLoading}
                 onSend={(question, id) => {
                   appStateContext?.state.isCosmosDBAvailable?.cosmosDB
@@ -911,7 +912,7 @@ const Chat = () => {
                 horizontalAlign="space-between"
                 verticalAlign="center">
                 <span aria-label="Citations" className={styles.citationPanelHeader}>
-                  Citations
+                  Sitater
                 </span>
                 <IconButton
                   iconProps={{ iconName: 'Cancel' }}
